@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import './App.css'
-import Home from './Pages/Home.jsx'
+import Home from './pages/Home.jsx'
 import MainLayout from './layout/MainLayout.jsx'
 import Features from './pages/Features.jsx'
 import Security from './pages/Security.jsx'
