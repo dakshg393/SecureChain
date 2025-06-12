@@ -1,10 +1,10 @@
 import { useState } from 'react'
 
 import './App.css'
-import Home from './Pages/Home'
-import MainLayout from './layout/MainLayout'
-import Features from './pages/Features'
-import Security from './pages/Security'
+import Home from './Pages/Home.jsx'
+import MainLayout from './layout/MainLayout.jsx'
+import Features from './pages/Features.jsx'
+import Security from './pages/Security.jsx'
 import { Route, Routes } from 'react-router-dom'
 
 
