@@ -1,5 +1,4 @@
 import React from "react";
-import bgImage from "../assets/bgmain1.jpg";
 import homeImage from "../assets/homeimage.jpg"
 import Button from "../components/microComponents/Button";
 const Home = () =>{
