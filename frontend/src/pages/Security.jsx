@@ -20,7 +20,7 @@ const Security = () =>{
                         <li>Decentralized Authentication</li>
                         <li>End-to-End Hash Verification</li>
                         <li>Trustless Verification</li>
-                        <li>Encryption & Anonymity</li>
+                        <li>Encryption & Anonymity.</li>
                     </ol>
                 </div>
            </div>
