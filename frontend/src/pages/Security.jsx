@@ -9,7 +9,7 @@ const Security = () =>{
                 <p className="text-center ">In a digital world full of vulnerabilities, SecureChain ensures your documents <br/> stay protected from tampering, fraud, and unauthorized access.</p>
            </div>
 
-           <div className="flex flex-wrap items-center justify-center flex-row gap-8 m-10 border-2 rounded-2xl">
+           <div className="flex flex-wrap items-center justify-center flex-row gap-8 m-10 border-2 rounded-2xl bg-white">
                 <div className="flex items-center justify-center  sm:flex-row md:flex-col">
                     <img  height={400} width={400} src={securityImage} />
                 </div>

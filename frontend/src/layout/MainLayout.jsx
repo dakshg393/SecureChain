@@ -3,10 +3,10 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Outlet } from "react-router-dom";
 
-const MainLayout = ({ children }) => {
+const MainLayout = () => {
   return (
     <>
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col ">
         <Header />
           <main className="pt-20 relative overflow-hidden flex-grow ">
              <div className="absolute inset-0 z-0 pointer-events-none">
@@ -20,7 +20,7 @@ const MainLayout = ({ children }) => {
             </svg>
           </div>
 
-            <div className="relative z-10"><Outlet /></div>
+            <div className="relative z-10 "><Outlet /></div>
             
           </main>
         <Footer />
