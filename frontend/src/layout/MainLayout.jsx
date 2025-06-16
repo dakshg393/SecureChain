@@ -8,7 +8,7 @@ const MainLayout = () => {
     <>
       <div className="min-h-screen flex flex-col ">
         <Header />
-          <main className="pt-20 relative overflow-hidden flex-grow ">
+          <main className="pt-20 p-4 relative overflow-hidden flex-grow ">
              <div className="absolute inset-0 z-0 pointer-events-none">
             <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -20,7 +20,7 @@ const MainLayout = () => {
             </svg>
           </div>
 
-            <div className="relative z-10 "><Outlet /></div>
+            <div className="relative z-10 min-h-[80vh]"><Outlet /></div>
             
           </main>
         <Footer />

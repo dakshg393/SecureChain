@@ -5,8 +5,10 @@ const NavItems = [
     {name:"Verify" , path:"/verify"},
     {name:"Security" , path:"/security"},
     {name:"Technology" , path:"/technology"},
-    {name:"FAQ" , path:"/faq"},
-    {name:"Contact" , path:"/contact"}
+    {name:"Login" , path:"/login"},
+    {name:"SignUp" , path:"/signup"},
+    // {name:"FAQ" , path:"/faq"},
+    // {name:"Contact" , path:"/contact"}
 ]
 
 

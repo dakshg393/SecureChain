@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Children } from "react";
 
-const Button =({text,onclick,className=""})=>{
+const Button =({text,onclick,customcss="",children})=>{
+ 
     return(
-        <button className={`bg-linear-to-l from-sky-500 to-indigo-500 h-12 w-36 rounded-4xl m-2 ${className}`}>{text}</button> 
+        <button  className={` cursor-pointer h-12 w-36 rounded-4xl m-2  border-2 border-cyan-300  ${customcss}`}>{children}</button> 
     )
 }
 
