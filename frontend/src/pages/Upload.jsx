@@ -1,7 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { CloudUpload } from "lucide-react"
 import Button from "../components/microComponents/Button";
+
 const Upload = () => {
+    const [uploadDoc, setUploadDoc] = useState(false)
+    const [fileName, setFileName] = useState("No file chosen")
+
+    const handleDrop = (e) => {
+        e.preventDefault();
+        const items = e.dataTransfer.items;
+
+        if (items && items[0].kind === "file") {
+            const file = e.dataTransfer.files[0];
+            setFileName(file.name);
+            return;
+        }
+
+        // Handle URL drops from Google Images
+        const url = e.dataTransfer.getData("text/uri-list");
+        if (url) {
+            setFileName("Image from web: " + url.split("/").pop()); // just a label
+            // Optional: fetch the file manually if needed
+        }
+    };
+
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setFileName(file.name);
+        }
+    };
+
     return (
         <section className="flex items-center justify-center flex-col gap-y-3">
             <h1 className="text-2xl text-center">Secure Document Upload</h1>
@@ -12,17 +42,19 @@ const Upload = () => {
                     <h1>Document Uploader</h1>
                     <p>Drag and drop your document or use the file browser. We support PDF, DOCX, JPG, and PNG formats.</p>
                 </span>
-                
+
                 <div className="flex items-center justify-center w-full ">
-                    <div class="flex items-center p-4 flex-col space-y-2 w-full  border-1 border-dashed rounded-2xl">
+                    <div class="flex items-center p-4 flex-col space-y-2 w-full  border-1 border-dashed rounded-2xl"
+                        onDragOver={(e) => e.preventDefault()}
+                        onDrop={handleDrop}>
                         <label><CloudUpload /></label>
                         <h1>Drag and drop your file here</h1>
                         <h1>or</h1>
-                        <label for="file-upload" className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 h-10 w-30 ">
-                            Choose File
+                        <label htmlFor="file-upload" className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 h-10 w-30 ">
+                            Browse File
                         </label>
-                        <input id="file-upload" type="file" class="hidden" onchange="document.getElementById('file-name').textContent = this.files[0]?.name || 'No file chosen'" />
-                        <p id="file-name" class="text-sm ">No file chosen</p>
+                        <input id="file-upload" type="file" className="hidden" onChange={handleFileChange} />
+                        <p id="file-name" class="text-sm ">{fileName}</p>
                     </div>
                 </div>
 
@@ -30,12 +62,12 @@ const Upload = () => {
                     <h1>Document Metadata</h1>
                     <span>
                         <label htmlFor="">Document Title:</label>
-                        <input className="border-1 mx-2 rounded-sm" type="text" placeholder="Enter Document Title"/>
-                          <label htmlFor="">Document Type:</label>
-                        <input className="border-1 mx-2 rounded-sm" type="text" placeholder="Enter Document Type"/><br/>
+                        <input className="border-1 mx-2 rounded-sm" type="text" placeholder="Enter Document Title" />
+                        <label htmlFor="">Document Type:</label>
+                        <input className="border-1 mx-2 rounded-sm" type="text" placeholder="Enter Document Type" /><br />
                     </span>
                     <label htmlFor="">Document Discription</label>
-                    <input  type="text" className="w-full min-h-20 border-1 mx-2 rounded-sm" placeholder="Enter Document Description"/>
+                    <input type="text" className="w-full min-h-20 border-1 mx-2 rounded-sm" placeholder="Enter Document Description" />
                 </div>
 
                 <Button>Upload Document</Button>

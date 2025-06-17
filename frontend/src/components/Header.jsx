@@ -17,13 +17,13 @@ const Header =()=>{
         setNavOpen((state)=>!state)
     }
     return(
-        <header className="w-full flex flex-col md:flex-row items-center  justify-center md:justify-between top-0 left-0 min-h-14 h-auto md:h-14 gap-6 md:gap-x-2  bg-white inset-shadow-2xs border-b-1 fixed z-20 font-semibold ">
-            <div className="flex flex-wrap flex-row items-center justify-between px-4 md:px-auto  md:pl-6 text-2xl w-full md:w-auto">
+        <header className="w-full flex flex-col lg:flex-row items-center  justify-center lg:justify-between top-0 left-0 min-h-14 h-auto lg:h-14 gap-6 lg:gap-x-2  bg-white inset-shadow-2xs border-b-1 fixed z-20 font-semibold ">
+            <div className="flex flex-wrap flex-row items-center justify-between px-4 lg:px-auto  lg:pl-6 text-2xl w-full lg:w-auto">
                 {/* <h1>SecureChain</h1>  */}
                 <Link to={""} >SecureChain</Link>
-                <button className={`block md:hidden`} onClick={toggleNav}>{isNavOpen?<X/> :<AlignJustify/>}</button>
+                <button className={`block lg:hidden`} onClick={toggleNav}>{isNavOpen?<X/> :<AlignJustify/>}</button>
             </div>
-            <div className={`${isNavOpen?"flex":"hidden md:flex"} items-center justify-center gap-x-8 pr-6 flex-col md:flex-row gap-y-4  w-full md:w-auto bg-white`}>
+            <div className={`${isNavOpen?"flex":"hidden lg:flex"} items-center justify-center gap-x-8 pr-6 flex-col lg:flex-row gap-y-4  w-full lg:w-auto bg-white`}>
                  {NavItems.map((item)=>(
                 <NavLink className={({isActive})=>`${isActive?"text-blue-500":""} hover:text-blue-500`} key={item.path} to={item.path}>{item.name}</NavLink>
             ))}

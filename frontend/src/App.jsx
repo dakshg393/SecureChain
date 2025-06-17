@@ -13,6 +13,8 @@ import Verify from './pages/Verify.jsx'
 import Contact from './pages/Contact.jsx'
 import Technology from './pages/Technology.jsx'
 import Faq from './pages/FAQ.jsx'
+import Login from './pages/Login.jsx'
+import Signup from './pages/Signup.jsx'
 
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
           <Route path="technology" element={<Technology />} />
           <Route path="faq" element={<Faq />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="Login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
          
         </Route>
       </Routes>
