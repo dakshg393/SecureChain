@@ -1,8 +1,25 @@
 import React, { useState } from "react";
+import { ethers } from "ethers";
 
 import Button from "../components/microComponents/Button";
 const Login = () => {
 
+     const [account, setAccount] = useState(null);
+
+  const connectWallet = async () => {
+    if (window.ethereum) {
+      try {
+        // Request account access if needed
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        const accounts = await provider.send("eth_requestAccounts", []);
+        setAccount(accounts[0]);
+      } catch (error) {
+        console.error("User rejected request:", error);
+      }
+    } else {
+      alert("Please install MetaMask!");
+    }
+  };
 
     return (
         <section className="flex items-center justify-center flex-col gap-y-3 p-4">
@@ -17,8 +34,12 @@ const Login = () => {
                 <label htmlFor="connectMetamask" className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 min-h-10 min-w-30 ">
                     Connect MetaMask Account
                 </label>
-                <input id="connectMetamask" type="button" className="hidden"  />
-
+                <input id="connectMetamask" type="button" className="hidden" onClick={connectWallet} />
+{account && (
+  <p className="text-sm text-green-600">Connected: {account.slice(0, 6)}...{account.slice(-4)}</p>
+)}
+    <label>Password</label>
+    <input type="password" className="border-1" />
 
 
                 <Button>Login</Button>

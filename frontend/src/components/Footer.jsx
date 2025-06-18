@@ -7,12 +7,7 @@ const Footer =()=>{
                 <h1>Securechain</h1>
                 <p>Secure, verify, and protect your critical documents with next-generation blockchain technology. Our platform ensures the integrity and authenticity of your most important files.</p>
             </div>
-            <div className="flex items-center justify-center flex-col flex-1 p-4">
-                <h1>Site</h1>
-            </div>
-            <div className="flex items-center justify-center flex-1 p-4">
-                <h1>Resources</h1>
-            </div>
+           
         </footer>
     )
 }

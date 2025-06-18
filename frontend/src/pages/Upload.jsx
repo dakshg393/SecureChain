@@ -54,7 +54,7 @@ const Upload = () => {
                             Browse File
                         </label>
                         <input id="file-upload" type="file" className="hidden" onChange={handleFileChange} />
-                        <p id="file-name" class="text-sm ">{fileName}</p>
+                        <p id="file-name" className="text-sm ">{fileName}</p>
                     </div>
                 </div>
 
