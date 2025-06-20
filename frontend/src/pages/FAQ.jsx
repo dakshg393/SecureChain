@@ -1,9 +1,10 @@
 import React from "react";
+import MainHeading from "../components/majorComponent/MainHeading";
 
 const Faq = ()=>{
     return(
         <section>
-            <h1>Contact</h1>
+            <MainHeading>FAQ</MainHeading>
         </section>
     )
 }

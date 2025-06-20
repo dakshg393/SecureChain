@@ -2,7 +2,9 @@
 
 
 @theme {
-    --color-theme:#86563c,
-   
+
+    --color-primary-color: #2563EB	;
+    --color-secondary-color: #3B82F6		;
+    --background-image-theme-gradient: linear-gradient(to left, #D946EF, #06B6D4);
     
 }

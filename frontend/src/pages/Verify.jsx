@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FileType, File, CodeXml } from "lucide-react"
 import Button from "../components/microComponents/Button";
+import MainHeading from "../components/majorComponent/MainHeading";
 const Verify = () => {
     const [uploadDoc, setUploadDoc] = useState(false)
     const [fileName, setFileName] = useState("No file chosen")
@@ -32,7 +33,7 @@ const Verify = () => {
     };
     return (
         <section className="flex items-center justify-center flex-col gap-y-3">
-            <h1 className="text-2xl text-center">Document Verification Portal</h1>
+            <MainHeading >Document Verification Portal</MainHeading>
             <p className="text-center">Instantly verify document authenticity with our AI-powered blockchain verification system.</p>
 
             <div className="flex  items-center justify-center  p-4 flex-col gap-y-8 rounded-2xl border-2 my-6 bg-white">

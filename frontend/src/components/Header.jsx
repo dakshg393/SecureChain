@@ -25,7 +25,7 @@ const Header =()=>{
             </div>
             <div className={`${isNavOpen?"flex":"hidden lg:flex"} items-center justify-center gap-x-8 pr-6 flex-col lg:flex-row gap-y-4  w-full lg:w-auto bg-white`}>
                  {NavItems.map((item)=>(
-                <NavLink className={({isActive})=>`${isActive?"text-blue-500":""} hover:text-blue-500`} key={item.path} to={item.path}>{item.name}</NavLink>
+                <NavLink className={({isActive})=>`${isActive?"text-primary-color":""} hover:text-primary-color`} key={item.path} to={item.path}>{item.name}</NavLink>
             ))}
 
           

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ethers } from "ethers";
 
 import Button from "../components/microComponents/Button";
+import MainHeading from "../components/majorComponent/MainHeading";
 const Login = () => {
 
      const [account, setAccount] = useState(null);
@@ -23,7 +24,7 @@ const Login = () => {
 
     return (
         <section className="flex items-center justify-center flex-col gap-y-3 p-4">
-            <h1 className="text-2xl text-center">Login</h1>
+            <MainHeading >Login</MainHeading>
             <p className="text-center">Login to Your Account.</p>
 
             <div className="flex  items-center justify-center min-w-[80vw] md:min-w-100   p-4 flex-col gap-y-8 rounded-2xl border-2 my-6 bg-white">

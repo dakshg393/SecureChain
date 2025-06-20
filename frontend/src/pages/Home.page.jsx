@@ -11,15 +11,15 @@ const Home = () =>{
             <div className="w-full md:w-1/2 min-h-full flex flex-col items-start  justify-center p-4 pl-6 flex-wrap">
                 <h1 className="text-3xl md:text-6xl font-bold pb-4">
                     <span className="">Secure Document<br/></span>
-                    <span className="bg-linear-to-l from-cyan-500 to-indigo-500 bg-clip-text text-transparent">Blockchain eVault</span>
+                    <span className="bg-theme-gradient bg-clip-text text-transparent">Blockchain eVault</span>
                 </h1>
                 <p className=" pb-4 ">Store, verify and secure your critical documents with next-generation blockchain technology. Tamper-proof, encrypted, and instantly verifiable.</p>
                 <span >
-                     <Link to={"upload"}><Button  key={"upload"}  customcss="bg-theme">Upload</Button></Link>
-                    <Link to={"verify"}><Button  key={"verifyDocButton"}  customcss="">Verify</Button></Link>
+                     <Link to={"upload"}><Button  key={"upload"}  customcss="bg-theme-gradient">Upload</Button></Link>
+                    <Link to={"verify"}><Button  key={"verifyDocButton"}  customcss="bg-white">Verify</Button></Link>
                  </span>
             </div>
-            <div className="w-full md:w-1/2 min-h-full flex items-center justify-end">
+            <div className="w-full md:w-1/2 min-h-full flex items-center justify-end ">
                 <img src={homeImage} alt="Image" />
             </div>
             </div>
