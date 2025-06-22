@@ -36,52 +36,81 @@ const Verify = () => {
             <MainHeading ><span className="text-black">Document</span> Verification Portal</MainHeading>
             <p className="text-center">Instantly verify document authenticity with our AI-powered blockchain verification system.</p>
 
-            <div className="flex  items-center justify-center  p-4 flex-col gap-y-8 rounded-2xl border-2 my-6 bg-white">
-                <span className="text-start">
-                    <h1>Verify Document</h1>
-                    <p>Upload a document to verify its authenticity against the blockchain record.</p>
-                </span>
+            <div className="flex items-start justify-center flex-col gap-5 lg:flex-row">
 
-                <div className="flex items-center justify-center w-full p-4 gap-4  ">
-                    <button className={`w-1/2 border-2 cursor-pointer text-center flex items-center justify-center h-14   rounded-sm ${uploadDoc ? "bg-theme-gradient" : ""}`} onClick={() => setUploadDoc(true)}> <File /> Upload Document </button>
-                    <button className={`w-1/2 border-2  cursor-pointer flex items-center justify-center h-14 rounded-sm ${uploadDoc ? "" : "bg-theme-gradient"}`} onClick={() => setUploadDoc(false)}> <CodeXml /> Enter Hash ID</button>
-                </div>
+                <div className="flex  items-center justify-center  p-4 flex-col gap-y-8 rounded-2xl border-2 my-6 bg-white">
+                    <span className="text-start">
+                        <h1>Verify Document</h1>
+                        <p>Upload a document to verify its authenticity against the blockchain record.</p>
+                    </span>
 
-                {uploadDoc ?
-                    <div className="flex items-center justify-center w-full "
-                        onDrop={handleDrop}
-                        onDragOver={(e) => e.preventDefault()}
-                    >
-                        <div className="flex items-center p-4 flex-col space-y-2 w-full  border-1 border-dashed rounded-2xl">
-                            <label htmlFor=""><FileType /></label>
-                            <h1>Drag and drop document to verify</h1>
-                            <h1>or</h1>
-                            <label htmlFor="file-upload" className="cursor-pointer bg-theme-gradient rounded-full text-white px-4 py-2  h-10 w-30 ">
-                                Browse File
-                            </label>
-                            <input id="file-upload" type="file" className="hidden" onChange={handleFileChange} />
-                            <p id="file-name" class="text-sm ">{fileName}</p>
+                    <div className="flex items-center justify-center w-full p-4 gap-4  ">
+                        <button className={`w-1/2 border-2 cursor-pointer text-center flex items-center justify-center h-14   rounded-sm ${uploadDoc ? "bg-theme-gradient" : ""}`} onClick={() => setUploadDoc(true)}> <File /> Upload Document </button>
+                        <button className={`w-1/2 border-2  cursor-pointer flex items-center justify-center h-14 rounded-sm ${uploadDoc ? "" : "bg-theme-gradient"}`} onClick={() => setUploadDoc(false)}> <CodeXml /> Enter Hash ID</button>
+                    </div>
+
+                    {uploadDoc ?
+                        <div className="flex items-center justify-center w-full "
+                            onDrop={handleDrop}
+                            onDragOver={(e) => e.preventDefault()}
+                        >
+                            <div className="flex items-center p-4 flex-col space-y-2 w-full  border-1 border-dashed rounded-2xl">
+                                <label htmlFor=""><FileType /></label>
+                                <h1>Drag and drop document to verify</h1>
+                                <h1>or</h1>
+                                <label htmlFor="file-upload" className="cursor-pointer bg-theme-gradient rounded-full text-white px-4 py-2  h-10 w-30 ">
+                                    Browse File
+                                </label>
+                                <input id="file-upload" type="file" className="hidden" onChange={handleFileChange} />
+                                <p id="file-name" class="text-sm ">{fileName}</p>
+                            </div>
                         </div>
-                    </div>
-                    :
-                    <div className=" border-1 p-8 flex justify-center flex-col gap-y-4 rounded-2xl w-full">
-                        <h1>Verify Document </h1>
+                        :
+                        <div className=" border-1 p-8 flex justify-center flex-col gap-y-4 rounded-2xl w-full">
+                            <h1>Verify Document </h1>
 
-                        <label htmlFor="">Document Hash ID</label>
-                        <input type="text" className="w-full min-h-20 border-1 mx-2 rounded-sm" placeholder="Enter Document Hash ID" />
-                    </div>
-                }
+                            <label htmlFor="">Document Hash ID</label>
+                            <input type="text" className="w-full min-h-20 border-1 mx-2 rounded-sm" placeholder="Enter Document Hash ID" />
+                        </div>
+                    }
 
-                <Button customcss="bg-theme-gradient">Verfiy Document</Button>
-            </div>
-
-
-            <div className="flex  items-center justify-center  p-4 flex-col gap-y-8 rounded-2xl border-2 my-6 bg-white">
-                 <div className="flex items-center justify-center w-full p-4 gap-4  ">
-                    <label htmlFor="status" className=" h-30 w-30 rounded-full bg-transparent border-8 border-red-400">
-                        <span className="w-full h-full flex items-center justify-center ">X</span>
-                    </label>
+                    <Button customcss="bg-theme-gradient">Verfiy Document</Button>
                 </div>
+
+
+                <div className="flex  items-center justify-center  p-4 flex-col gap-y-8 rounded-2xl border-2 my-6 bg-white">
+                    <span className="text-start">
+                        <h1>Verification Results</h1>
+                        <p>Upload a document to see the verification results and blockchain information.</p>
+                    </span>
+
+                    <div className="flex items-center justify-center w-full p-4 gap-4  ">
+                        <label htmlFor="status" className=" h-30 w-30 rounded-full bg-transparent border-8 border-red-400">
+                            <span className="w-full h-full flex items-center justify-center ">X</span>
+                        </label>
+                    </div>
+
+                    <div className="flex  justify-center flex-col w-full">
+                        <label htmlFor="">Title</label>
+                        <label htmlFor="">Document Type</label>
+                        <label htmlFor="">Discription</label>
+                        <label htmlFor="">Date</label>
+                        <label htmlFor="dochash">Document Hash</label>
+                        <span className="flex items-center border-2 w-full rounded overflow-hidden">
+                            <input
+                                type="text"
+                                className="flex-grow border-none outline-none"
+                                placeholder="Document Hash is..."
+                            />
+                            <button className="bg-blue-600 text-white px-4 py-2 hover:bg-blue-700">
+                                C
+                            </button>
+                        </span>
+
+                    </div>
+                    <Button customcss="bg-theme-gradient">Dawonlod Doc</Button>
+                </div>
+
 
             </div>
         </section>

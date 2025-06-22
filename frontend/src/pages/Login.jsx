@@ -24,13 +24,13 @@ const Login = () => {
 
     return (
         <section className="flex items-center justify-center flex-col gap-y-3 p-4">
-            <MainHeading >Login</MainHeading>
-            <p className="text-center">Login to Your Account.</p>
+            <MainHeading > <span className="text-black">Let's Get</span> Started</MainHeading>
+            <p className="text-center">  Connect your MetaMask wallet to securely access your dashboard.</p>
 
             <div className="flex  items-center justify-center min-w-[80vw] md:min-w-100   p-4 flex-col gap-y-8 rounded-2xl border-2 my-6 bg-white">
                 <span className="text-start">
-                    <h1>Login</h1>
-                    <p>Login Now</p>
+                    <h1>Connect Your Wallet</h1>
+                    <p> Use your MetaMask wallet to log in to your account.</p>
                 </span>
                 <label htmlFor="connectMetamask" className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 min-h-10 min-w-30 ">
                     Connect MetaMask Account
@@ -39,11 +39,8 @@ const Login = () => {
 {account && (
   <p className="text-sm text-green-600">Connected: {account.slice(0, 6)}...{account.slice(-4)}</p>
 )}
-    <label>Password</label>
-    <input type="password" className="border-1" />
-
-
-                <Button>Login</Button>
+    
+     
             </div>
         </section>
     )

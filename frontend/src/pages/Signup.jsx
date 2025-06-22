@@ -7,14 +7,15 @@ const Signup = () => {
 
     return (
         <section className="flex items-center justify-center flex-col gap-y-3">
-            <MainHeading className="text-2xl text-center">Signup</MainHeading>
-            <p className="text-center">Signup to Your Account.</p>
+            <MainHeading >  <span className="text-black">Sign Up</span> to SecureChain</MainHeading>
+            <p className="text-center"> Connect your MetaMask wallet to create your blockchain-backed identity and start securely verifying documents.</p>
 
-            <div className="flex  items-center justify-center min-w-[80vw] md:min-w-100 p-4 flex-col gap-y-8 rounded-2xl border-2 my-6 bg-white ">
+            <div className="flex  items-center justify-center min-w-[80vw] md:min-w-100 p-4  gap-y-8 flex-col rounded-2xl border-2 my-6 bg-white ">
                 <span className="text-start">
-                    <h1>SignUp</h1>
-                    <p>Signup Now</p>
+                    <h1>Wallet Sign Up</h1>
+                    <p> Use your MetaMask wallet to register a tamper-proof, Web3-secured account.</p>
                 </span>
+                <span>
                 <label className="font-medium">Choose account type</label>
                 <select
                     value={accountType}
@@ -25,16 +26,19 @@ const Signup = () => {
                     <option value="User">User</option>
                     <option value="Organization">Organization</option>
                 </select>
-                <label>MetaMaskID ID</label>
-                <input type="text" className="border-1" />
+               </span>
+               <span>
                 <label>Name</label>
                 <input type="text" className="border-1" />
+                </span>
+                <span>
                 <label>Email</label>
                 <input type="text" className="border-1" />
+                </span>
 
 
 
-                <Button>Sign Up</Button>
+                <Button customcss="bg-theme-gradient">Sign Up</Button>
             </div>
         </section>
     )
