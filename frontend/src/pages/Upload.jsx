@@ -35,7 +35,7 @@ const Upload = () => {
 
     return (
         <section className="flex items-center justify-center flex-col gap-y-3">
-            <MainHeading >Secure Document Upload</MainHeading>
+            <MainHeading > <span className="text-black">Secure</span> Document Upload</MainHeading>
             <p className="text-center">Upload your legal documents securely to our blockchain-powered eVault, ensuring tamper-proof storage and instant verification.</p>
 
             <div className="flex  items-center justify-center  p-4 flex-col gap-y-8 rounded-2xl border-2 my-6 bg-white">
@@ -51,7 +51,7 @@ const Upload = () => {
                         <label><CloudUpload /></label>
                         <h1>Drag and drop your file here</h1>
                         <h1>or</h1>
-                        <label htmlFor="file-upload" className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 h-10 w-30 ">
+                        <label htmlFor="file-upload" className="cursor-pointer bg-theme-gradient text-white px-4 py-2  rounded-full h-10 w-30 ">
                             Browse File
                         </label>
                         <input id="file-upload" type="file" className="hidden" onChange={handleFileChange} />
@@ -71,7 +71,7 @@ const Upload = () => {
                     <input type="text" className="w-full min-h-20 border-1 mx-2 rounded-sm" placeholder="Enter Document Description" />
                 </div>
 
-                <Button>Upload Document</Button>
+                <Button customcss="bg-theme-gradient">Upload Document</Button>
             </div>
         </section>
     )

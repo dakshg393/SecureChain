@@ -6,7 +6,7 @@ const Security = () =>{
     return(
         <section className=" flex flex-wrap justify-center items-center  flex-col text-center" >
            <div className="flex items-center justify-center flex-col">
-                <MainHeading className="text-4xl"><span> Advanced </span>  Security Architecture </MainHeading>
+                <MainHeading ><span className="text-black"> Advanced </span>  Security Architecture </MainHeading>
                 <p className="text-center  ">In a digital world full of vulnerabilities, SecureChain ensures your documents <br/> stay protected from tampering, fraud, and unauthorized access.</p>
            </div>
 

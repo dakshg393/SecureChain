@@ -1,9 +1,10 @@
 import React from "react";
+import MainHeading from "../components/majorComponent/MainHeading";
 
 const Technology = ()=>{
     return(
         <section>
-            <h1>Technology Stack</h1>
+            <MainHeading>Technology Stack </MainHeading>
         </section>
     )
 }

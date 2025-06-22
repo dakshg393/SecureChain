@@ -33,7 +33,7 @@ const Verify = () => {
     };
     return (
         <section className="flex items-center justify-center flex-col gap-y-3">
-            <MainHeading >Document Verification Portal</MainHeading>
+            <MainHeading ><span className="text-black">Document</span> Verification Portal</MainHeading>
             <p className="text-center">Instantly verify document authenticity with our AI-powered blockchain verification system.</p>
 
             <div className="flex  items-center justify-center  p-4 flex-col gap-y-8 rounded-2xl border-2 my-6 bg-white">
@@ -43,8 +43,8 @@ const Verify = () => {
                 </span>
 
                 <div className="flex items-center justify-center w-full p-4 gap-4  ">
-                    <button className={`w-1/2 border-2 cursor-pointer text-center flex items-center justify-center h-14  rounded-sm ${uploadDoc ? "border-blue-500" : ""}`} onClick={() => setUploadDoc(true)}> <File /> Upload Document </button>
-                    <button className={`w-1/2 border-2  cursor-pointer flex items-center justify-center h-14 rounded-sm ${uploadDoc ? "" : "border-blue-500"}`} onClick={() => setUploadDoc(false)}> <CodeXml /> Enter Hash ID</button>
+                    <button className={`w-1/2 border-2 cursor-pointer text-center flex items-center justify-center h-14   rounded-sm ${uploadDoc ? "bg-theme-gradient" : ""}`} onClick={() => setUploadDoc(true)}> <File /> Upload Document </button>
+                    <button className={`w-1/2 border-2  cursor-pointer flex items-center justify-center h-14 rounded-sm ${uploadDoc ? "" : "bg-theme-gradient"}`} onClick={() => setUploadDoc(false)}> <CodeXml /> Enter Hash ID</button>
                 </div>
 
                 {uploadDoc ?
@@ -56,7 +56,7 @@ const Verify = () => {
                             <label htmlFor=""><FileType /></label>
                             <h1>Drag and drop document to verify</h1>
                             <h1>or</h1>
-                            <label htmlFor="file-upload" className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 h-10 w-30 ">
+                            <label htmlFor="file-upload" className="cursor-pointer bg-theme-gradient rounded-full text-white px-4 py-2  h-10 w-30 ">
                                 Browse File
                             </label>
                             <input id="file-upload" type="file" className="hidden" onChange={handleFileChange} />
@@ -72,7 +72,17 @@ const Verify = () => {
                     </div>
                 }
 
-                <Button>Verfiy Document</Button>
+                <Button customcss="bg-theme-gradient">Verfiy Document</Button>
+            </div>
+
+
+            <div className="flex  items-center justify-center  p-4 flex-col gap-y-8 rounded-2xl border-2 my-6 bg-white">
+                 <div className="flex items-center justify-center w-full p-4 gap-4  ">
+                    <label htmlFor="status" className=" h-30 w-30 rounded-full bg-transparent border-8 border-red-400">
+                        <span className="w-full h-full flex items-center justify-center ">X</span>
+                    </label>
+                </div>
+
             </div>
         </section>
     )
