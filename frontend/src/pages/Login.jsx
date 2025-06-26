@@ -14,6 +14,7 @@ const Login = () => {
         const provider = new ethers.BrowserProvider(window.ethereum);
         const accounts = await provider.send("eth_requestAccounts", []);
         setAccount(accounts[0]);
+        console.log(accounts[0]);
       } catch (error) {
         console.error("User rejected request:", error);
       }

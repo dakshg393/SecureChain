@@ -1,88 +1,41 @@
+const express = require("express");
+const { ethers } = require("ethers");
+const cors = require("cors");
+require("dotenv").config();
+const contractABI = require("./UserVaultABI.json");
 
+const app = express();
+app.use(cors());
+app.use(express.json());
 
-// import app from "./app.js";
-// import dotenv from "dotenv"
+const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
+const signer = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
+const contract = new ethers.Contract(process.env.CONTRACT_ADDRESS, contractABI, signer);
 
-// dotenv.config({
-//     path:"./.env"
-// })
+// Register User
+app.post("/api/register", async (req, res) => {
+  const { account, name, email, userType } = req.body;
 
-// import { fromPath } from "pdf2pic";
-// import Tesseract from "tesseract.js";
-// import fs from "fs";
-// import crypto from "crypto"
-// // Step 1: Convert PDF to image (first page as example)
-// const convert = fromPath("./daksh.pdf", {
-//   density: 150,
-//   saveFilename: "output",
-//   savePath: "./output",
-//   format: "png",
-//   width: 800,
-//   height: 1000,
-// });
-
-// convert(1).then(async (res) => {
-//   console.log("Image saved:", res.path);
-
-//   // Step 2: Run OCR on the saved image
-//   const result = await Tesseract.recognize(res.path, "eng", {
-//     logger: (m) => console.log(m),
-//   });
-
-//   const text = result.data.text;
-//   console.log("Extracted OCR Text:\n", text);
-
-//   // Step 3: Hash the extracted text
-// //   const crypto = await import('crypto');
-//   const hash = crypto.createHash('sha256').update(text).digest('hex');
-//   console.log("OCR Text SHA256 Hash:", hash);
-// });
-
-
-// app.listen(5000,()=>{
-    
-//     console.log("App is Running on Port 500")
-// })
-
-import app from "./app.js";
-import dotenv from "dotenv";
-import { fromPath } from "pdf2pic";
-import Tesseract from "tesseract.js";
-import fs from "fs";
-import crypto from "crypto";
-
-dotenv.config({ path: "./.env" });
-
-// Step 1: Convert PDF to image (first page)
-const convert = fromPath("./daksh.pdf", {
-  density: 150,
-  saveFilename: "output",
-  savePath: "./output",
-  format: "png",
-  width: 800,
-  height: 1000,
-});
-
-const runOCR = async () => {
   try {
-    const res = await convert(1);
-    console.log("Image saved:", res.path);
-
-    const result = await Tesseract.recognize(res.path, "eng", {
-      logger: (m) => console.log(m),
-    });
-
-    const text = result.data.text;
-    console.log("Extracted OCR Text:\n", text);
-
-    const hash = crypto.createHash("sha256").update(text).digest("hex");
-    console.log("OCR Text SHA256 Hash:", hash);
+    const tx = await contract.registerUser(account, name, email, userType);
+    await tx.wait();
+    res.json({ status: "success", txHash: tx.hash });
   } catch (err) {
-    console.error("OCR or Hashing Failed:", err);
+    res.status(500).json({ error: err.reason || "Registration failed" });
   }
-};
-
-app.listen(5000, () => {
-  console.log("App is Running on Port 5000");
-  runOCR(); // Run OCR once server starts (optional)
 });
+
+// Upload Document
+app.post("/api/upload", async (req, res) => {
+  const { account, docHash, docTitle, docType, docDescription } = req.body;
+
+  try {
+    const tx = await contract.uploadDocument(account, docHash, docTitle, docType, docDescription);
+    await tx.wait();
+    res.json({ status: "uploaded", txHash: tx.hash });
+  } catch (err) {
+    res.status(500).json({ error: err.reason || "Upload failed" });
+  }
+});
+
+app.listen(5000, () => console.log("Server running on http://localhost:5000"));

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CloudUpload } from "lucide-react"
 import Button from "../components/microComponents/Button";
 import MainHeading from "../components/majorComponent/MainHeading";
+import Tesseract from "tesseract.js"
 
 const Upload = () => {
     const [uploadDoc, setUploadDoc] = useState(false)
+    const [file, setFile] = useState(null)
     const [fileName, setFileName] = useState("No file chosen")
 
     const handleDrop = (e) => {
@@ -14,6 +16,7 @@ const Upload = () => {
         if (items && items[0].kind === "file") {
             const file = e.dataTransfer.files[0];
             setFileName(file.name);
+            setFile(file)
             return;
         }
 
@@ -29,9 +32,29 @@ const Upload = () => {
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (file) {
+            setFile(file)
             setFileName(file.name);
         }
     };
+
+    useEffect(() => {
+        const extractTextFromImage = async () => {
+            if (!file || file.type === "application/pdf") return;
+
+            try {
+                const result = await Tesseract.recognize(file, "eng");
+                const text = result.data.text;
+                console.log("Extracted OCR Text:", text);
+                // TODO: Hash this and send to backend or blockchain
+            } catch (err) {
+                console.error("OCR failed:", err);
+            }
+        };
+
+        extractTextFromImage();
+    }, [file]);
+
+
 
     return (
         <section className="flex items-center justify-center flex-col gap-y-3">
@@ -45,16 +68,16 @@ const Upload = () => {
                 </span>
 
                 <div className="flex items-center justify-center w-full ">
-                    <div class="flex items-center p-4 flex-col space-y-2 w-full  border-1 border-dashed rounded-2xl"
+                    <div className="flex items-center p-4 flex-col space-y-2 w-full  border-1 border-dashed rounded-2xl"
                         onDragOver={(e) => e.preventDefault()}
                         onDrop={handleDrop}>
                         <label><CloudUpload /></label>
                         <h1>Drag and drop your file here</h1>
                         <h1>or</h1>
-                        <label htmlFor="file-upload" className="cursor-pointer bg-theme-gradient text-white px-4 py-2  rounded-full h-10 w-30 ">
+                        <label htmlFor="file-upload" accept=".jpg,.jpeg,.png,.pdf" className="cursor-pointer bg-theme-gradient text-white px-4 py-2  rounded-full h-10 w-30 ">
                             Browse File
                         </label>
-                        <input id="file-upload" type="file" className="hidden" onChange={handleFileChange} />
+                        <input id="file-upload" type="file" accept=".jpg,.jpeg,.png,.pdf" className="hidden" onChange={handleFileChange} />
                         <p id="file-name" className="text-sm ">{fileName}</p>
                     </div>
                 </div>
