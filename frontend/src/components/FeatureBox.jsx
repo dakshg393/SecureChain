@@ -6,7 +6,6 @@ const FeaturesBox = ({icon,title="",description,className})=>{
             <p className="text-4xl ">{icon}</p>
             <h1 className="text-2xl font-bold">{title}</h1>
             <p className="text-center">{description}</p>
-            
 
         </div>
     )
